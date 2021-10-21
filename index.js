@@ -5,7 +5,7 @@ const twitterClient = new Twitter.TwitterApi(process.env.TWITTER_TOKEN)
 
 //setup - console output and activity set
 discordClient.on('ready', () => {
-    console.log(`Logged in as ${client.user.tag}!`)
+    console.log(`Logged in as ${discordClient.user.tag}!`)
     discordClient.user.setActivity("The Transfer Demon Retcon 4.0", { type: "WATCHING"})
 })
 
