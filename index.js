@@ -1,5 +1,5 @@
 const Discord = require('discord.js')
-const discordClient = new Discord.Client({partials: ['REACTION']})
+const discordClient = new Discord.Client({partials: ['MESSAGE', 'CHANNEL', 'REACTION']})
 const Twitter = require('twitter-api-v2')
 const twitterClient = new Twitter.TwitterApi(process.env.TWITTER_TOKEN)
 
@@ -25,11 +25,11 @@ discordClient.on('messageReactionAdd', async (reaction) => {
     if (reaction.id === process.env.EMOJI_ID && reaction.message.author.id === process.env.TAKASHI_ID && reaction.count >= process.env.REACT_THRESHOLD) {
         console.log('Correct emoji, user, and threshhold detected')
         if (reaction.message.content.length <= 280){
-            await twitterClient.v1.tweet(reaction.message.content);
-            await reaction.message.reply("Tweeted!")
+            twitterClient.v1.tweet(reaction.message.content);
+            reaction.message.reply("Tweeted!");
         }
         else
-            await reaction.message.reply("Message was too long for Twitter :(")
+            reaction.message.reply("Message was too long for Twitter :(");
     }
 })
 
