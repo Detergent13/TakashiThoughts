@@ -3,7 +3,9 @@ const discordClient = new Discord.Client({partials: ['MESSAGE', 'CHANNEL', 'REAC
 const Twitter = require('twitter-api-v2')
 const twitterClient = new Twitter.TwitterApi({
     appKey: process.env.APP_KEY,
-    appSecret: process.env.APP_SECRET
+    appSecret: process.env.APP_SECRET,
+    accessToken: process.env.ACCESS_TOKEN,
+    accessSecret: process.env.ACCESS_SECRET
 });
 
 //setup - console output and activity set
