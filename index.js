@@ -1,7 +1,10 @@
 const Discord = require('discord.js')
 const discordClient = new Discord.Client({partials: ['MESSAGE', 'CHANNEL', 'REACTION']})
 const Twitter = require('twitter-api-v2')
-const twitterClient = new Twitter.TwitterApi(process.env.TWITTER_TOKEN)
+const twitterClient = new Twitter.TwitterApi({
+    appKey: process.env.APP_KEY,
+    appSecret: process.env.APP_SECRET
+});
 
 //setup - console output and activity set
 discordClient.on('ready', () => {
