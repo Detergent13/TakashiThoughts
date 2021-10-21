@@ -1,5 +1,5 @@
 const Discord = require('discord.js')
-const discordClient = new Discord.Client({partials: ['MESSAGE', 'CHANNEL', 'REACTION']})
+const discordClient = new Discord.Client({partials: ['MESSAGE', 'CHANNEL', 'REACTION', 'USER', 'GUILD_MEMBER']})
 const Twitter = require('twitter-api-v2')
 const twitterClient = new Twitter.TwitterApi({
     appKey: process.env.APP_KEY,
@@ -26,6 +26,7 @@ discordClient.on('messageReactionAdd', async (reaction) => {
     console.log('Reaction detected')
     if (reaction.partial) await reaction.fetch();
     if (reaction.message.partial) await reaction.message.fetch();
+    if (reaction.message.author.partial) await reaction.message.author.fetch();
 
     if (reaction.emoji.id === process.env.EMOJI_ID && reaction.message.author.id === process.env.TAKASHI_ID && reaction.count === process.env.REACT_THRESHOLD) {
         console.log('Correct emoji, user, and threshhold detected')
