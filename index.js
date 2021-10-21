@@ -28,6 +28,10 @@ discordClient.on('messageReactionAdd', async (reaction) => {
     if (reaction.message.partial) await reaction.message.fetch();
     if (reaction.message.author.partial) await reaction.message.author.fetch();
 
+    console.log(reaction.emoji.id)
+    console.log(reaction.message.author.id)
+    console.log(reaction.count)
+
     if (reaction.emoji.id === process.env.EMOJI_ID && reaction.message.author.id === process.env.TAKASHI_ID && reaction.count === process.env.REACT_THRESHOLD) {
         console.log('Correct emoji, user, and threshhold detected')
         if (reaction.message.content.length <= 280){
