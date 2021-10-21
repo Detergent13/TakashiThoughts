@@ -28,11 +28,7 @@ discordClient.on('messageReactionAdd', async (reaction) => {
     if (reaction.message.partial) await reaction.message.fetch();
     if (reaction.message.author.partial) await reaction.message.author.fetch();
 
-    console.log(reaction.emoji.id === process.env.EMOJI_ID)
-    console.log(reaction.message.author.id === process.env.TAKASHI_ID)
-    console.log(reaction.count == process.env.REACT_THRESHOLD)
-
-    if ((reaction.emoji.id === process.env.EMOJI_ID) && (reaction.message.author.id === process.env.TAKASHI_ID) && (reaction.count === process.env.REACT_THRESHOLD)) {
+    if (reaction.emoji.id === process.env.EMOJI_ID && reaction.message.author.id === process.env.TAKASHI_ID && reaction.count == process.env.REACT_THRESHOLD) {
         console.log('Correct emoji, user, and threshhold detected')
         if (reaction.message.content.length <= 280){
             twitterClient.v1.tweet(reaction.message.content);
