@@ -1,0 +1,22 @@
+{
+  "name": "takashithoughts",
+  "version": "1.0.0",
+  "description": "Discord bot to post Takashi thoughts to Twitter",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "discord.js": "12.x",
+    "twitter-api-v2": "^1.6.1"
+  },
+  "engines": {
+    "node": "16.x"
+  },
+  "repository": {
+    "type": "git",
+    "url": "github.com/Detergent13/TakashiThoughts"
+  },
+  "author": "Detergent13",
+  "license": "ISC"
+}
