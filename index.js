@@ -1,7 +1,7 @@
 const Discord = require('discord.js')
 const discordClient = new Discord.Client()
 const Twitter = require('twitter-api-v2')
-const twitterClient = new Twitter.TwitterApi()
+const twitterClient = new Twitter.TwitterApi(process.env.TWITTER_TOKEN)
 
 //setup - console output and activity set
 discordClient.on('ready', () => {
@@ -29,4 +29,3 @@ discordClient.on('messageReactionAdd', reaction => {
 })
 
 discordClient.login(process.env.BOT_TOKEN)
-twitterClient.login(process.env.TWITTER_TOKEN)
