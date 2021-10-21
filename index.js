@@ -30,7 +30,7 @@ discordClient.on('messageReactionAdd', async (reaction) => {
 
     console.log(reaction.emoji.id === process.env.EMOJI_ID)
     console.log(reaction.message.author.id === process.env.TAKASHI_ID)
-    console.log(reaction.count === process.env.REACT_THRESHOLD)
+    console.log(reaction.count == process.env.REACT_THRESHOLD)
 
     if ((reaction.emoji.id === process.env.EMOJI_ID) && (reaction.message.author.id === process.env.TAKASHI_ID) && (reaction.count === process.env.REACT_THRESHOLD)) {
         console.log('Correct emoji, user, and threshhold detected')
