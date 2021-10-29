@@ -21,7 +21,7 @@ discordClient.on('message', msg => {
     }
 })
 
-//toggles - exclusive to ID(s)
+//detect reaction and tweet if it meets the threshold, author, and emoji that we're looking for
 discordClient.on('messageReactionAdd', async (reaction) => {
     console.log('Reaction detected')
     if (reaction.partial) await reaction.fetch();
