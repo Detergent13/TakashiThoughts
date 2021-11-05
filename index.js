@@ -1,5 +1,9 @@
 const Discord = require('discord.js')
-const discordClient = new Discord.Client({partials: ['MESSAGE', 'CHANNEL', 'REACTION', 'USER', 'GUILD_MEMBER']})
+const discordClient = new Discord.Client(
+    {
+        partials: ['MESSAGE', 'CHANNEL', 'REACTION', 'USER', 'GUILD_MEMBER'],
+        intents: ['GUILD_MESSAGES', 'GUILD_MESSAGE_REACTIONS']
+    })
 const Twitter = require('twitter-api-v2')
 const twitterClient = new Twitter.TwitterApi({
     appKey: process.env.APP_KEY,
@@ -11,11 +15,11 @@ const twitterClient = new Twitter.TwitterApi({
 //setup - console output and activity set
 discordClient.on('ready', () => {
     console.log(`Logged in as ${discordClient.user.tag}!`)
-    discordClient.user.setActivity("The Transfer Demon Retcon 4.0", { type: "WATCHING"})
+    discordClient.user.setActivity("The Transfer Demon Retcon 4.0", { type: "PLAYING"})
 })
 
 //ping
-discordClient.on('message', msg => {
+discordClient.on('messageCreate', msg => {
     if (msg.content === 'ping') {
         msg.reply('Pong!')
     }
