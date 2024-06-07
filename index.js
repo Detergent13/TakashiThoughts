@@ -1,3 +1,4 @@
+require('dotenv').config();
 const Discord = require('discord.js')
 
 const discordClient = new Discord.Client(
@@ -39,7 +40,7 @@ discordClient.on('messageReactionAdd', async (reaction) => {
     if (reaction.emoji.id === process.env.EMOJI_ID && reaction.message.author.id === process.env.TAKASHI_ID && reaction.count == process.env.REACT_THRESHOLD) {
         console.log('Correct emoji, user, and threshhold detected')
         if (reaction.message.content.length <= 280){
-            twitterClient.v1.tweet(reaction.message.content);
+            twitterClient.v2.tweet(reaction.message.content);
             reaction.message.reply("Tweeted!");
         }
         else
